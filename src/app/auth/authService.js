@@ -28,6 +28,7 @@ export const authService = {
   async logout() {
     // Replace this with your actual logout logic (e.g., clearing tokens)
     // await yourLogoutFunction();
+    sessionStorage.removeItemItem('session', JSON.stringify({savedSession: true, user: user}));
 
     // Dispatch the logoutSuccess action
     store.dispatch(logoutSuccess());
