@@ -1,9 +1,28 @@
+"use client"
 import Image from "next/image";
+import Navbar from "./components/navbar/Navbar";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 
 export default function Home() {
+  const [user, setUser] = useState(false);
+  const router = useRouter();
+
+  useEffect(()=>{
+    if(!user)
+    {
+      router.push('/login');
+    }
+    else
+    {
+      router.push('dashboard');
+    }
+  }, [user, router]);
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Hello World!</h1>
-    </main>
+    <>
+    </>
   );
 }

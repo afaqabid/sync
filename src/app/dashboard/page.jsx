@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import './dashboard.css';
+import Navbar from '../components/navbar/Navbar';
 
 function Dashboard() {
     const [inputText, setInputText] = useState('');
@@ -28,9 +29,7 @@ function Dashboard() {
     return (
         <>
             <div className="main-div">
-                <nav className="nav-bar">
-                    <div className="logo">sync.</div>
-                </nav>
+                <Navbar/>
                 <div className="center-div">
                     <h1>Tasks</h1>
                     <hr />
@@ -46,6 +45,7 @@ function Dashboard() {
                         <button className='add-btn' onClick={handleAddNewTask}>Add + </button>
                     </div>
 
+                    {tasks.length > 0 ?
                     <div className="previous-tasks">
                         {tasks.map((task, index) => (
                             <div className="task-item" key={index}>
@@ -66,6 +66,8 @@ function Dashboard() {
                             </div>
                         ))}
                     </div>
+                    :
+                    <></>}
                 </div>
             </div>
         </>
