@@ -58,6 +58,10 @@ function Register() {
                 avatar: imgUrl,
                 userId: res.user.uid
             });
+            await setDoc(doc(db, 'userTasks', res.user.uid), {
+                tasks:[]
+            });
+
             toast.success("User Registered Successfully!");
             setLoading(false);
 
@@ -67,10 +71,10 @@ function Register() {
             toast.error(error.message);
         }
 
-        const sigin = await signInWithEmailAndPassword(auth, email, password);
-        console.log(sigin);
+        // const sigin = await signInWithEmailAndPassword(auth, email, password);
+        // console.log(sigin);
 
-        router.push('/dashboard');
+        router.push('/login');
     }
 
     return (

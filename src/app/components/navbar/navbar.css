@@ -5,6 +5,9 @@
     height: 70px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* .logo{
     color: rgb(20, 135, 212);
     display: flex;
     align-items: center;
@@ -12,5 +15,12 @@
     font-weight: 800;
     padding-left: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+
+.logout-button{
+    background-color: white;
+    font-size: 18px;
+    border-radius: 5px;
 
 }
