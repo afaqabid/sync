@@ -14,12 +14,11 @@ function Dashboard() {
     const router = useRouter();
 
     const user = useSelector((state)=>state.auth.user);
+    const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated)
 
-    if (!user || !user.uid) {
-        console.error("User is not logged in or UID is missing.");
+    if (!isAuthenticated) {
         router.push('/login');
-
-        return null; // Or handle this case appropriately in your app.
+        // return null; // Or handle this case appropriately in your app.
     }
 
     // Function to fetch data from Firestore
