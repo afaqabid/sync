@@ -5,6 +5,7 @@ import Navbar from '../components/navbar/Navbar';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 function Dashboard() {
     const [inputText, setInputText] = useState('');
@@ -12,7 +13,7 @@ function Dashboard() {
 
     const router = useRouter();
 
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const user = useSelector((state)=>state.auth.user);
 
     if (!user || !user.uid) {
         console.error("User is not logged in or UID is missing.");
