@@ -16,12 +16,12 @@ export const authService = {
     const res = await signInWithEmailAndPassword(auth, userData.email, userData.password)
     const user = res.user;
 
-    sessionStorage.setItem('session', JSON.stringify({savedSession: true, user: user}));
-    
-    
+    sessionStorage.setItem('session', JSON.stringify({ savedSession: true, user: user }));
+
+
     // Dispatch the loginSuccess action with the user data
     store.dispatch(loginSuccess(user));
-    
+
     return user;
   },
 
@@ -39,12 +39,11 @@ export const authService = {
     const session = JSON.parse(sessionStorage.getItem('session'));
 
 
-    if(session)
-    {
-        if(session.savedSession == true)
-        {
-            store.dispatch(loginSuccess(session.user));
-        }
+    if (session) {
+      if (session.savedSession == true) {
+        store.dispatch(loginSuccess(session.user));
+        return session.user;
+      }
     }
 
   }

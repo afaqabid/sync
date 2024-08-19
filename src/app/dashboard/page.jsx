@@ -6,20 +6,31 @@ import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
+import { authService } from '../auth/authService';
 
 function Dashboard() {
     const [inputText, setInputText] = useState('');
     const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true); // Add a loading state
 
     const router = useRouter();
 
-    const user = useSelector((state)=>state.auth.user);
-    const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated)
+    // Check for saved session
+    useEffect(() => {
+        const checkAuth = async () => {
+            const sessionUser = await authService.checkSavedSession();
+            if (sessionUser) {
+                setLoading(false);
+            } else {
+                router.push('/login');
+            }
+        };
+        checkAuth();
+    }, [router]);
 
-    if (!isAuthenticated) {
-        router.push('/login');
-        // return null; // Or handle this case appropriately in your app.
-    }
+    const user = useSelector((state) => state.auth.user);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
 
     // Function to fetch data from Firestore
     const getDataFromDB = async () => {
@@ -39,8 +50,10 @@ function Dashboard() {
     };
 
     useEffect(() => {
-        getDataFromDB(); // Fetch the tasks when the component is mounted
-    }, []);
+        if (isAuthenticated && !loading) {
+            getDataFromDB(); // Fetch the tasks when the component is mounted and user is authenticated
+        }
+    }, [isAuthenticated, loading]);
 
     const updateTasksInDB = async () => {
         try {
@@ -53,7 +66,7 @@ function Dashboard() {
     };
 
     useEffect(() => {
-        if (tasks.length > 0) {
+        if (tasks.length >= 0) {
             updateTasksInDB();
         }
     }, [tasks]);
@@ -76,6 +89,26 @@ function Dashboard() {
         const newTasks = tasks.filter((_, i) => i !== index);
         setTasks(newTasks);
     };
+
+    const handleClearAll = () => {
+        setTasks([]);
+    };
+
+    const handleAllCompleted = () => {
+        const newTasks = tasks.map((task) => ({ ...task, completed: !task.completed }));
+        setTasks(newTasks);
+    }
+
+
+
+    if (loading) {
+        // return <div>Loading...</div>; // Add a loading indicator while checking authentication
+        return <div></div>; // Add a loading indicator while checking authentication
+    }
+
+    if (!isAuthenticated) {
+        return null; // This will prevent the rendering if the user is not authenticated
+    }
 
     return (
         <div className="main-div">
@@ -119,6 +152,11 @@ function Dashboard() {
                 ) : (
                     <p>No tasks available.</p>
                 )}
+                <div className='lower-btns'>
+                    <button onClick={handleClearAll}>Clear All</button>
+                    <span>|</span>
+                    <button onClick={handleAllCompleted}>Mark All Completed</button>
+                </div>
             </div>
         </div>
     );
