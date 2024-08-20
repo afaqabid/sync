@@ -12,6 +12,7 @@ function Dashboard() {
     const [inputText, setInputText] = useState('');
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true); // Add a loading state
+    const [dataFetched, setDataFetched] = useState(false);
 
     const router = useRouter();
 
@@ -44,6 +45,7 @@ function Dashboard() {
             } else {
                 console.log("No such document!");
             }
+            setDataFetched(true);
         } catch (error) {
             console.error("Error fetching tasks:", error);
         }
@@ -66,10 +68,10 @@ function Dashboard() {
     };
 
     useEffect(() => {
-        if (tasks.length >= 0) {
+        if (dataFetched) {
             updateTasksInDB();
         }
-    }, [tasks]);
+    }, [tasks, dataFetched]);
 
     const handleAddNewTask = () => {
         if (inputText.trim() !== '') {
