@@ -1,0 +1,229 @@
+.main-div-dashboard-component {
+    height: 100%;
+    padding: 15px;
+    position: relative;
+}
+
+.upper-div-dashboard-component {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.welcomeText {
+    color: black;
+    font-size: 38px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lower-div-dashboard-component {
+    height: 85%;
+    /* border: 1px solid #a1a3ab63; */
+    /* padding: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.left-lower-div-dashboard-component {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.right-lower-div-dashboard-component {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.todoBlock {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-todo-main-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 15px;
+}
+
+.add-todo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.todo-icon {
+    min-height: 30px;
+    max-height: 30px;
+    width: auto;
+}
+
+.todo-heading {
+    color: blue;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.todo-btn {
+    color: #A1A3AB;
+    font-size: 16px;
+}
+
+.todo-Btn-icon {
+    color: blue;
+    font-size: 24px;
+}
+
+.task-status-block {
+    flex: 1.2;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    padding: 10px;
+
+}
+
+.task-status-main-div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.task-status-div {
+    display: flex;
+    gap: 5px;
+}
+
+.task-status-icon {
+    min-height: 22px;
+    max-height: 22px;
+    width: auto;
+}
+
+.task-status-heading {
+    color: blue;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+
+.task-completed-block {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    padding: 10px;
+}
+
+.completed-task-main-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+   
+}
+
+.completed-tasks-div {
+    display: flex;
+    gap: 5px;
+}
+
+.completed-tasks-icon {
+    min-height: 22px;
+    max-height: 22px;
+    width: auto;
+}
+
+.completed-tasks-heading {
+    color: blue;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.todo-cards {
+    max-height: 500px;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.todo-cards::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+
+.todo-completed-cards {
+    max-height: 270px;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.todo-completed-cards::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Darken the background */
+    z-index: 999; /* Make sure overlay is behind the modal */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.add-task-modal {
+    height: 90%;
+    width: 80%;
+    position: absolute; /* Fixed positioning to ensure it centers in the viewport */
+    top: 0;
+    left: 0;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 1000; /* Ensure modal is on top of the overlay */
+    opacity: 0; /* Initial state for animation */
+    transform: scale(0.7); /* Start scaled down */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: black;
+    padding: 20px;
+}
+
+.add-task-modal.show {
+    opacity: 1;
+    transform: scale(1); /* Scale to normal size */
+}

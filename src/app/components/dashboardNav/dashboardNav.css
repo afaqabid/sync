@@ -1,0 +1,94 @@
+.mainBar{
+    height: 80px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px;
+}
+
+.left{
+    width: 20%;
+    padding: 20px;
+
+    p{
+        color: #0671d3;
+        font-size: 30px;
+
+        span{
+            color: black;
+        }
+    }
+
+}
+
+
+.center{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inputDiv{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInput{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 8px 0px 0px 8px;
+    outline: none;
+    border: none;
+    color: gray;
+}
+
+.searchBtn{
+    background-color: #0671d3;
+    border-radius: 8px;
+    margin-left: -5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    padding: 12px;
+}
+
+.right{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notificationBtn{
+    background-color: #0671d3;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    padding: 12px;
+
+}
+
+.calenderBtn{
+    background-color: #0671d3;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    padding: 12px;
+}
+
+.day{
+    color: #0671d3;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.date{
+    color: gray;
+    font-weight: 400;
+    font-size: 14px;
+}
